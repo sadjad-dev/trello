@@ -11,9 +11,9 @@ function Boards() {
   const [boards, setBoards] = useState(initialBoards);
 
   const addBoard = () => {
-    const newBorads = [
+    const newBorads: IBoard[] = [
       ...boards,
-      { id: boards?.length + 1, title: "new board" },
+      { id: boards[boards?.length - 1]?.id + 1, title: "new board" },
     ];
     setBoards(newBorads);
   };
