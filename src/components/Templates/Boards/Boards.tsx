@@ -6,7 +6,7 @@ function Boards() {
   return (
     <div className="flex flex-nowrap gap-8 py-10 overflow-x-auto border-gray-300 h-screen px-4">
       {boards?.map((board) => {
-        return <Board board={board} />;
+        return <Board key={board?.id} board={board} />;
       })}
     </div>
   );
