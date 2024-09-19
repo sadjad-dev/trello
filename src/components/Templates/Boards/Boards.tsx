@@ -1,11 +1,12 @@
 "use client";
 
 import React, { useState } from "react";
-import { initialBoards } from "./utils";
+import { cards, initialBoards } from "./utils";
 import Board from "@/components/Organisms/Board/Board";
 import Button from "@/components/Atoms/Button/Button";
 import { IBoard } from "./type";
 import debounce from "lodash/debounce";
+import generateRandomId from "@/utils/mathUtil";
 
 function Boards() {
   const [boards, setBoards] = useState(initialBoards);
@@ -13,17 +14,17 @@ function Boards() {
   const addBoard = () => {
     const newBorads: IBoard[] = [
       ...boards,
-      { id: boards[boards?.length - 1]?.id + 1, title: "new board" },
+      { id: generateRandomId(), title: "new board" },
     ];
     setBoards(newBorads);
   };
 
-  const deleteBoard = (id: number) => {
+  const deleteBoard = (id: number | string) => {
     const newBorads: IBoard[] = [...boards]?.filter((item) => item?.id !== id);
     setBoards(newBorads);
   };
 
-  const editBoard = debounce((id: number, title: string) => {
+  const editBoard = debounce((id: number | string, title: string) => {
     const newBorads: IBoard[] = [...boards];
     const findIndex = newBorads?.findIndex((item) => item?.id === id);
 
@@ -43,6 +44,7 @@ function Boards() {
               board={board}
               deleteBoard={deleteBoard}
               editBoard={editBoard}
+              cards={cards?.filter((card) => card?.parentBoard === board?.id)}
             />
           );
         })}
