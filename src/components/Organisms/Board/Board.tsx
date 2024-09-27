@@ -23,11 +23,11 @@ function Board(props: IBoardProps) {
     setDraggedCard(id);
   };
 
-  const handleDragOver = (event: any) => {
+  const handleDragOver = (event: React.DragEvent<HTMLDivElement>) => {
     event.preventDefault();
   };
 
-  const handleDrop = (event: any) => {
+  const handleDrop = (event: React.DragEvent<HTMLDivElement>) => {
     event.preventDefault();
 
     const newBoradCards: ICard[] = [...boardCards];
