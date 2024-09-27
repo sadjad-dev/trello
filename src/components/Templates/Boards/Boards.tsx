@@ -1,7 +1,6 @@
 "use client";
 
 import React from "react";
-import { cards } from "./utils";
 import Board from "@/components/Organisms/Board/Board";
 import Button from "@/components/Atoms/Button/Button";
 import { IBoard } from "./type";
@@ -10,7 +9,7 @@ import generateRandomId from "@/utils/mathUtil";
 import { useBoardStore } from "@/store/boardStore";
 
 function Boards() {
-  const { boards, setBoards, draggedCard, setDraggedCard } = useBoardStore();
+  const { boards, setBoards } = useBoardStore();
 
   const addBoard = () => {
     const newBorads: IBoard[] = [
