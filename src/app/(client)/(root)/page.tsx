@@ -4,7 +4,7 @@ import React from "react";
 function page() {
   return (
     <div>
-      hello world! Go to <Link href={"/boards"}>Boards Page</Link>
+      hello world! Go to <Link href={"/boards"}>Boards Page!</Link>
     </div>
   );
 }
