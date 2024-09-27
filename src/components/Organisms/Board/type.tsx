@@ -4,5 +4,4 @@ export interface IBoardProps {
   board: IBoard;
   deleteBoard: (id: number | string) => void;
   editBoard: (id: number | string, title: string) => void;
-  cards: ICard[];
 }

@@ -1,15 +1,16 @@
 "use client";
 
-import React, { useState } from "react";
-import { cards, initialBoards } from "./utils";
+import React from "react";
+import { cards } from "./utils";
 import Board from "@/components/Organisms/Board/Board";
 import Button from "@/components/Atoms/Button/Button";
 import { IBoard } from "./type";
 import debounce from "lodash/debounce";
 import generateRandomId from "@/utils/mathUtil";
+import { useBoardStore } from "@/store/boardStore";
 
 function Boards() {
-  const [boards, setBoards] = useState(initialBoards);
+  const { boards, setBoards, draggedCard, setDraggedCard } = useBoardStore();
 
   const addBoard = () => {
     const newBorads: IBoard[] = [
@@ -44,7 +45,6 @@ function Boards() {
               board={board}
               deleteBoard={deleteBoard}
               editBoard={editBoard}
-              cards={cards?.filter((card) => card?.parentBoard === board?.id)}
             />
           );
         })}
